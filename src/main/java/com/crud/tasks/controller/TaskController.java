@@ -6,7 +6,9 @@ import com.crud.tasks.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
@@ -23,8 +25,8 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
-    public TaskDto getTask() {
-        return new TaskDto(1L, "test title", "test_content");
+    public TaskDto getTask(@RequestParam String id) {
+        return taskMapper.mapToTaskDto(service.getTask(Long.parseLong(id)));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
