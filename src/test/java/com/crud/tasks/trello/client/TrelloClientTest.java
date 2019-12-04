@@ -78,5 +78,8 @@ public class TrelloClientTest {
         Assert.assertEquals("1", newCard.getId());
         Assert.assertEquals("Test task", newCard.getName());
         Assert.assertEquals("http://test.com", newCard.getShortUrl());
+        Assert.assertEquals(0, newCard.getBadges().getVotes());
+        Assert.assertEquals(0, newCard.getBadges().getAttachmentsByType().getTrello().getBoard());
+        Assert.assertEquals(0, newCard.getBadges().getAttachmentsByType().getTrello().getCard());
     }
 }
