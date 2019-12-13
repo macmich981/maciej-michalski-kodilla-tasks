@@ -32,6 +32,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-mail:2.2.2.RELEASE')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	//providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+
 }
 
 test {
