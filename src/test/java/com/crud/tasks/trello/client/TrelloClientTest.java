@@ -69,11 +69,11 @@ public class TrelloClientTest {
         Trello trello = new Trello(0, 0);
         AttachmentsByType attachmentsByType = new AttachmentsByType(trello);
         Badges badges = new Badges(0, attachmentsByType);
-        CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard("1", "Test task", "http://test.com", badges);
+        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto("1", "Test task", "http://test.com", badges);
 
-        when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
+        when(restTemplate.postForObject(uri, null, CreatedTrelloCardDto.class)).thenReturn(createdTrelloCardDto);
         //When
-        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
         //Then
         Assert.assertEquals("1", newCard.getId());
         Assert.assertEquals("Test task", newCard.getName());
