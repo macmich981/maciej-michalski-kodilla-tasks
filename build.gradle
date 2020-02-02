@@ -33,7 +33,7 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	//providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-
+	compile('com.google.code.gson:gson:2.8.2')
 }
 
 test {
