@@ -37,10 +37,30 @@ public class MailCreatorService {
         context.setVariable("company_goal", adminConfig.getCompanyGoal());
         context.setVariable("company_email", adminConfig.getCompanyEmail());
         context.setVariable("company_phone", adminConfig.getCompanyPhone());
-        context.setVariable("show_button", false);
+        context.setVariable("show_button", true);
         context.setVariable("is_friend", false);
         context.setVariable("admin_config", adminConfig);
         context.setVariable("application_functionality", functionality);
-        return templateEngine.process("mail/created-trello-card-mail", context);
+        context.setVariable("show_functionality", true);
+        return templateEngine.process("mail/created-trello-card-and-task-mail", context);
+    }
+
+    public String buildScheduleTaskEmail(String message) {
+        Context context = new Context();
+
+        context.setVariable("message", message);
+        context.setVariable("preview_message", "Info about amount of tasks");
+        context.setVariable("tasks_url", "http://macmich981.github.io");
+        context.setVariable("button", "Visit website");
+        context.setVariable("admin_name", adminConfig.getAdminName());
+        context.setVariable("company_name", adminConfig.getCompanyName());
+        context.setVariable("company_goal", adminConfig.getCompanyGoal());
+        context.setVariable("company_email", adminConfig.getCompanyEmail());
+        context.setVariable("company_phone", adminConfig.getCompanyPhone());
+        context.setVariable("show_button", false);
+        context.setVariable("is_friend", false);
+        context.setVariable("admin_config", adminConfig);
+        context.setVariable("show_functionality", false);
+        return templateEngine.process("mail/created-trello-card-and-task-mail", context);
     }
 }
